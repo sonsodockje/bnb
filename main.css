@@ -1,0 +1,156 @@
+/* Reset & Global Styles */
+* {
+    /* outline: 1px solid red; */
+    /* 디버깅용 outline은 주석 처리 또는 제거 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+}
+
+/* Container */
+.container {
+    background-color: white;
+    width: 80%;
+    max-width: 1980px;
+    margin: 0 auto;
+}
+
+/* Flex Utility Class - 필요하다면 유지 */
+.flex {
+    display: flex;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    /* 텍스트 중앙 정렬은 .logo, .gnb-menu, .menu에서 개별적으로 처리 */
+    padding-top: 20px;
+    position: relative;
+}
+
+header .gnb {
+    display: grid;
+    grid-template-columns: min(220px) 1fr min(220px);
+    grid-template-rows: 1fr 1fr;
+    /* 1fr 1fr 대신 auto auto 사용.  콘텐츠 크기에 맞게 */
+    grid-template-areas:
+        "logo gnb-menu menu"
+        "search search search";
+    align-items: center;
+}
+
+/* Logo */
+header .gnb .logo {
+    grid-area: logo;
+    display: flex;
+    /* flexbox로 변경 */
+    align-items: center;
+    cursor: pointer;
+}
+
+/* GNB Menu */
+header .gnb .gnb-menu {
+    grid-area: gnb-menu;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: auto;
+}
+
+header .gnb .gnb-menu ul {
+    display: flex;
+    list-style: none;
+    width: 40%;
+    min-width: 200px;
+    justify-content: space-between;
+    /* li 사이 간격 균등 분배 */
+}
+
+header .gnb .gnb-menu ul li {
+    position: relative;
+    padding-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Menu Item Hover Effects (with :not()) - 더 효율적인 방법 */
+header .gnb .gnb-menu ul li:not(.active):hover {
+    color: rgba(255, 255, 255, 0.582);
+    /* transition: color 0.7s;  색상만 변하므로 color에만 transition 적용 */
+}
+
+header .gnb .gnb-menu ul li:not(.active):hover::before {
+    content: "";
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.582);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s;
+    /* width, height, border-radius, background-color 모두 변하므로 all */
+}
+
+/* Active Menu Item Styles */
+header .gnb .gnb-menu ul .active {
+    color: white;
+    /* .active:hover 와 중복 제거 */
+}
+
+header .gnb .gnb-menu ul .active::before {
+    content: "";
+    height: 2px;
+    width: 15px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Menu (우측 상단 메뉴) */
+header .gnb .menu {
+    grid-area: menu;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+header .gnb .menu p:hover,
+header .gnb .menu>i:hover {
+
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.089);
+    padding: 10px;
+    border-radius: 1rem;
+}
+
+header .gnb .menu .profile {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 5px 10px;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    gap: 15px;
+}
+
+/* Search (검색창) */
+header .gnb .search {
+    grid-area: search;
+}
+
+/* 모든 transition을 한 곳에 정의 (선택 사항) */
+header .gnb .gnb-menu ul li {
+    transition: color 0.2s;
+
+}
