@@ -36,13 +36,14 @@ header {
 
 header .gnb {
     display: grid;
-    grid-template-columns: min(220px) 1fr min(220px);
+    grid-template-columns: min(250px) 1fr min(250px);
     grid-template-rows: 1fr 1fr;
     /* 1fr 1fr 대신 auto auto 사용.  콘텐츠 크기에 맞게 */
     grid-template-areas:
         "logo gnb-menu menu"
         "search search search";
     align-items: center;
+
 }
 
 /* Logo */
@@ -60,7 +61,7 @@ header .gnb .gnb-menu {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: auto;
+    padding: 5px 0;
 }
 
 header .gnb .gnb-menu ul {
@@ -69,6 +70,7 @@ header .gnb .gnb-menu ul {
     width: 40%;
     min-width: 200px;
     justify-content: space-between;
+
     /* li 사이 간격 균등 분배 */
 }
 
@@ -122,20 +124,28 @@ header .gnb .menu {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 15px;
+    gap: 10px;
+    padding: 10px 2px;
+
+    overflow: none;
+}
+header .gnb .menu p,
+header .gnb .menu>i {
+
+    padding: 10px 9px;
+    border-radius: 1rem;
 }
 
 header .gnb .menu p:hover,
 header .gnb .menu>i:hover {
-
     cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.089);
-    padding: 10px;
-    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.808);
+
+
 }
 
 header .gnb .menu .profile {
-    background-color: white;
+    background-color: rgba(238, 238, 238, 0.568);
     border-radius: 1rem;
     padding: 5px 10px;
     color: black;
@@ -147,8 +157,50 @@ header .gnb .menu .profile {
 /* Search (검색창) */
 header .gnb .search {
     grid-area: search;
+
+}
+header .gnb .search ul{
+    display: flex;
+    justify-content:space-around;
+
+    align-items: center;
+
+
+    background-color: rgb(255, 255, 255);
+    width: 80%;
+    color: black;
+    margin: auto;
+    outline: 1px solid black;
+    border-radius: 5rem;
 }
 
+header .gnb .search ul li{
+    width: 100%;
+    list-style: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: left;
+
+    padding: 20px 20px 20px 35px;
+    border-right: .5px solid rgb(161, 161, 161);
+}
+header .gnb .search ul li:first-child{
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    border-left: none;
+}
+header .gnb .search ul li:last-child{
+        border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+
+    border-right: none;
+}
+
+header .gnb .search ul li:hover{
+    background-color: rgb(231, 231, 231);
+    color: white;
+    transition: background-color 0.5s;
+}
 /* 모든 transition을 한 곳에 정의 (선택 사항) */
 header .gnb .gnb-menu ul li {
     transition: color 0.2s;
