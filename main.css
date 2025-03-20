@@ -33,17 +33,14 @@ header {
     padding-top: 20px;
     position: relative;
 }
-
 header .gnb {
-    display: grid;
-    grid-template-columns: min(250px) 1fr min(250px);
-    grid-template-rows: 1fr 1fr;
-    /* 1fr 1fr 대신 auto auto 사용.  콘텐츠 크기에 맞게 */
-    grid-template-areas:
-        "logo gnb-menu menu"
-        "search search search";
-    align-items: center;
-
+  display: grid;
+  grid-template-columns: minmax(250px, auto) 1fr minmax(250px, auto); /* 수정 */
+grid-template-rows: minmax(min-content, auto) minmax(min-content, auto);
+  grid-template-areas:
+    "logo gnb-menu menu"
+    "search search search";
+  align-items: center;
 }
 
 /* Logo */
@@ -200,6 +197,35 @@ header .gnb .search ul li:hover{
     background-color: rgb(231, 231, 231);
     color: white;
     transition: background-color 0.5s;
+}
+
+.notice{   background-color: rgb(255, 50, 129);
+    border-radius: 1rem;
+    padding: 6rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 50px;
+
+}
+.notice a {
+    display: inline-block;
+    padding: 15px;
+    background-color: none;
+    border: 1px solid white;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    border-radius: .5rem;
+    font-size: 1rem;
+    line-height: normal;
+    font-weight: normal;
+        transition: all .2s;
+}
+
+.notice a:hover{
+    background-color: #0000000e;
+    transition: all .2s;
 }
 /* 모든 transition을 한 곳에 정의 (선택 사항) */
 header .gnb .gnb-menu ul li {
